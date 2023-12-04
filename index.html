@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignitia 2K24</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-image: url(background.jpg);
+            background-size: cover;
+            
+        }
+
+        .reveal {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .reveal-text {
+            position: absolute;
+            color: white;
+            font-size: 50px;
+            white-space: nowrap;
+            will-change: transform;
+        }
+
+        .reveal-text img{
+            padding-left: 10%;
+            width: 400px;
+            height: auto;
+        }
+
+        .reveal-text .text
+        {
+            font-size: 30px;
+            font-weight: 300;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color:rgb(205, 243, 243);
+            text-align: center;
+            margin-top: 30pxpx;
+            margin-left: 300px;
+            animation: flash 3s infinite;
+
+
+        }
+
+        @keyframes textAppear {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        @keyframes flash {
+            0%   {opacity: 0;}
+            50% {opacity: 1;}
+            100% {opacity: 0;}
+        } 
+
+
+        .reveal-bg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: black;
+            will-change: transform;
+        }
+
+        .reveal-bg-video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: black;
+            will-change: transform;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <video class="reveal-bg-video" src="bg-vid.mp4" autoplay muted loop></video>
+        <div class="reveal-text">
+            <img src="logo.png" alt="">
+            <div class="text">Coming Soon...</div>
+
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script>
+        const revealText = document.querySelector('.reveal-text');
+        const revealBg = document.querySelector('.reveal-bg-video');
+
+        gsap.fromTo(
+            revealBg,
+            { width: '0%' },
+            {
+                width: '100%',
+                duration: 5,
+                ease: 'expo.inOut',
+                stagger: 1,
+            }
+        );
+
+        gsap.fromTo(
+            revealText,
+            { x: '-100%' },
+            {
+                x: '0%',
+                duration: 5,
+                ease: 'expo.inOut',
+                stagger: 0.5,
+            }
+        );
+    </script>
+</body>
+</html>
